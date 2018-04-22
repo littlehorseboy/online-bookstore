@@ -14,7 +14,7 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{name: 'shoppingCart'}">
+          <router-link :to="{name: 'ShoppingCart'}">
             <!-- <div><img src="./assets/images/cart.svg" alt=""></div> -->
             <div>購物車</div>
           </router-link>

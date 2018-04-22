@@ -6,7 +6,7 @@ import Home from '@/pages/Home';
 import Category from '@/pages/Category';
 import ShoppingCart from '@/pages/ShoppingCart';
 import Me from '@/pages/Me';
-// import BookDetails from '@/components/BookDetails'
+import BookDetails from '@/components/BookDetails';
 
 Vue.use(Router);
 
@@ -29,7 +29,7 @@ export default new Router({
     },
     {
       path: '/shopping-cart',
-      name: 'shoppingCart',
+      name: 'ShoppingCart',
       component: ShoppingCart,
     },
     {
@@ -37,10 +37,10 @@ export default new Router({
       name: 'Me',
       component: Me,
     },
-    // {
-    //   path: '/books/:id',
-    //   name: 'bookDetails',
-    //   component: BookDetails
-    // }
+    {
+      path: '/books/:id',
+      name: 'BookDetail',
+      component: BookDetails,
+    },
   ],
 });
