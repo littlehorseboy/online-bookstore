@@ -5,7 +5,8 @@
       <div class="more">更多...</div>
     </div>
     <div class="book-items">
-      <div v-for="(book, index) in books" :key="index" class="book">
+      <div v-for="(book, index) in books" :key="index"
+        @click="$emit('onBookSelect', book)" class="book">
         <div class="cover">
           <img :src="book.img_url">
           </div>

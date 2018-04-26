@@ -23,11 +23,13 @@
     </div>
     <div class="section">
       <!-- 新書上架 -->
-      <book-list heading="新書上架" :books="latestUpdated"></book-list>
+      <book-list heading="新書上架" :books="latestUpdated"
+        @onBookSelect="preview($event)"></book-list>
     </div>
     <div class="section">
       <!-- 編輯推薦 -->
-      <book-list heading="編輯推薦" :books="recommended"></book-list>
+      <book-list heading="編輯推薦" :books="recommended"
+        @onBookSelect="preview($event)"></book-list>
     </div>
   </div>
 </template>
@@ -43,122 +45,30 @@ export default {
   },
   data() {
     return {
-      announcement: '今日上架的圖書全部8折',
-      slides: [
-        { id: 1, img_url: '../../static/fixtures/sliders/t1.svg' },
-        { id: 2, img_url: '../../static/fixtures/sliders/t2.svg' },
-      ],
-      latestUpdated: [
-        {
-          id: 1,
-          title: '揭开数据真相：从小白到数据分析达人',
-          authors: [
-            'Edward Zaccaro, Daniel Zaccaro',
-          ],
-          img_url: '../../static/fixtures/covers/1.svg',
-        },
-        {
-          id: 2,
-          title: 'Android 高级进阶',
-          authors: [
-            '顾浩鑫',
-          ],
-          img_url: '../../static/fixtures/covers/2.svg',
-        },
-        {
-          id: 3,
-          title: '淘宝天猫电商运营与数据化选品完全手册',
-          authors: [
-            '老夏',
-          ],
-          img_url: '../../static/fixtures/covers/3.svg',
-        },
-        {
-          id: 4,
-          title: '大数据架构详解：从数据获取到深度学习',
-          authors: [
-            '朱洁',
-            '罗华霖',
-          ],
-          img_url: '../../static/fixtures/covers/4.svg',
-        },
-        {
-          id: 5,
-          title: 'Meteor全栈开发',
-          authors: [
-            '杜亦舒',
-          ],
-          img_url: '../../static/fixtures/covers/5.svg',
-        },
-        {
-          id: 6,
-          title: 'Kubernetes权威指南：从Docker到Kubernetes实践全接触（第2版）',
-          authors: [
-            '龚正',
-            '吴治辉',
-            '王伟',
-            '崔秀龙',
-            '闫健勇',
-          ],
-          img_url: '../../static/fixtures/covers/6.svg',
-        },
-      ],
-      recommended: [
-        {
-          id: 1,
-          title: '揭开数据真相：从小白到数据分析达人',
-          authors: [
-            'Edward Zaccaro, Daniel Zaccaro',
-          ],
-          img_url: '../../static/fixtures/covers/1.svg',
-        },
-        {
-          id: 2,
-          title: 'Android 高级进阶',
-          authors: [
-            '顾浩鑫',
-          ],
-          img_url: '../../static/fixtures/covers/2.svg',
-        },
-        {
-          id: 3,
-          title: '淘宝天猫电商运营与数据化选品完全手册',
-          authors: [
-            '老夏',
-          ],
-          img_url: '../../static/fixtures/covers/3.svg',
-        },
-        {
-          id: 4,
-          title: '大数据架构详解：从数据获取到深度学习',
-          authors: [
-            '朱洁',
-            '罗华霖',
-          ],
-          img_url: '../../static/fixtures/covers/4.svg',
-        },
-        {
-          id: 5,
-          title: 'Meteor全栈开发',
-          authors: [
-            '杜亦舒',
-          ],
-          img_url: '../../static/fixtures/covers/5.svg',
-        },
-        {
-          id: 6,
-          title: 'Kubernetes权威指南：从Docker到Kubernetes实践全接触（第2版）',
-          authors: [
-            '龚正',
-            '吴治辉',
-            '王伟',
-            '崔秀龙',
-            '闫健勇',
-          ],
-          img_url: '../../static/fixtures/covers/6.svg',
-        },
-      ],
+      announcement: '',
+      slides: [],
+      latestUpdated: [],
+      recommended: [],
     };
+  },
+  methods: {
+    preview(book) {
+      alert('顯示圖書詳情');
+    },
+  },
+  created() {
+    const self = this;
+    this.$http.get('../../static/fixtures/home/home.json').then((res) => {
+      // self.announcement = res.data.announcement;
+      // self.slides = res.data.slides;
+      // self.latestUpdated = res.data.latestUpdated;
+      // self.recommended = res.data.recommended;
+      Object.keys(res.data).forEach((keys) => {
+        self[keys] = res.data[keys];
+      });
+    }, (error) => {
+      console.log(`取得資料失敗: ${error}`);
+    });
   },
   mounted() {
     new Swiper(this.$refs.slider, {
