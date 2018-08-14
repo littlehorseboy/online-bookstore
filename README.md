@@ -1,30 +1,9 @@
 # online-bookstore
 
-> A Vue.js project
+看了這本書 跟著做 大概才做到 第 04 章 就擱置了 :sweat_smile:
+[前端設計範式三大天王之Vue.js：最完整實例作戰](http://www.books.com.tw/products/0010780802/)
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- vue-cli
+- vue-resource
+- vue-router
+- swiper

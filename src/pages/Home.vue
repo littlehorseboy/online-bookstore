@@ -52,7 +52,7 @@ export default {
     };
   },
   methods: {
-    preview(book) {
+    preview() {
       alert('顯示圖書詳情');
     },
   },
